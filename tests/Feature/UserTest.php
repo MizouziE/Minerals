@@ -9,8 +9,9 @@ use Tests\TestCase;
 class UserTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
-     * A basic feature test example.
+     *
      * @test
      * @return void
      */
@@ -26,5 +27,29 @@ class UserTest extends TestCase
         $this->post('/meals', $mealDetails);
 
         $this->assertDatabaseHas('meals', $mealDetails);
+
+        $this->get('/meals')->assertSee($mealDetails['food']);
     }
+
+    /**
+     *
+     * @test
+     * @return void
+     */
+    public function meal_must_have_food()
+    {
+        $this->post('/meals', [])->assertSessionHasErrors('food');
+    }
+
+
+    /**
+     *
+     * @test
+     * @return void
+     */
+    public function meal_must_have_drink()
+    {
+        $this->post('/meals', [])->assertSessionHasErrors('drink');
+    }
+
 }

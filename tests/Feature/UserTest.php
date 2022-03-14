@@ -39,7 +39,9 @@ class UserTest extends TestCase
      */
     public function meal_must_have_food()
     {
-        $this->post('/meals', [])->assertSessionHasErrors('food');
+        $meal = Meal::factory()->raw(['food' => '']);
+
+        $this->post('/meals', [$meal])->assertSessionHasErrors('food');
     }
 
 
@@ -50,7 +52,9 @@ class UserTest extends TestCase
      */
     public function meal_must_have_drink()
     {
-        $this->post('/meals', [])->assertSessionHasErrors('drink');
+        $meal = Meal::factory()->raw(['drink' => '']);
+
+        $this->post('/meals', [$meal])->assertSessionHasErrors('drink');
     }
 
 

@@ -14,8 +14,8 @@ class MealFactory extends Factory
     public function definition()
     {
         return [
-            'food' => $this->faker->word(),
-            'drink' => $this->faker->word()
+            'food' => $this->faker->word,
+            'drink' => $this->faker->word
         ];
     }
 }

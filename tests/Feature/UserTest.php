@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Meal;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -50,6 +51,21 @@ class UserTest extends TestCase
     public function meal_must_have_drink()
     {
         $this->post('/meals', [])->assertSessionHasErrors('drink');
+    }
+
+
+    /**
+     *
+     * @test
+     * @return void
+     */
+    public function user_can_view_meal()
+    {
+        $meal = Meal::factory()->create();
+
+        $this->get($meal->path())
+                ->assertSee($meal->food)
+                ->assertSee($meal->drink);
     }
 
 }

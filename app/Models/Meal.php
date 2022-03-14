@@ -13,4 +13,9 @@ class Meal extends Model
         'food',
         'drink'
     ];
+
+    public function path()
+    {
+        return "/meals/{$this->id}";
+    }
 }

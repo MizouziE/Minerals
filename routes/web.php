@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::post('/meals', [MealsController::class, 'store']);
-Route::get('//meals', [MealsController::class, 'index']);
+Route::get('/meals', [MealsController::class, 'index']);
+Route::get('/meals/{meal}', [MealsController::class, 'show']);

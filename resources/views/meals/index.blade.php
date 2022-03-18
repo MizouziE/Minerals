@@ -26,14 +26,23 @@
         <div class="best-meal w-3/4 mr-32">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Best Meal</h2>
             <div class="best-meal-container space-y-12 mt-8">
-                <div class="meal bg-gray-800 rounded-lg shadow-md flex px-6 py-6">
+                <div class="meal bg-gray-800 rounded-lg shadow-md flex px-4 py-4">
                     <div class="relative flex-none">
                         <a href="#">
                             <img src="{{ asset('images/micronutrients.jpg') }}" alt="Meal" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
                         </a>
-                        <div class="absolute bottom-0 right-0 h-12 w-12 bg-gray-900 rounded-full" style="right: -20px; bottom: -20px;">
+                        <div class="absolute bottom-0 right-0 h-10 w-10 bg-gray-900 rounded-full" style="right: -10px; bottom: -10px;">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
                         </div>
+                    </div>
+                    <div class="ml-8">
+                        <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400">
+                            Hard-code-name
+                        </a>
+                        <div class="text-gray-400 mt-1">Meal-type</div>
+                        <p class="mt-4 text-xs text-gray-400">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, numquam dicta tempore sed laboriosam.
+                        </p>
                     </div>
                 </div>
             </div>

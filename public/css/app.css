@@ -469,6 +469,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .right-0 {
   right: 0px;
 }
+.bottom-1 {
+  bottom: 0.25rem;
+}
+.right-1 {
+  right: 0.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -491,6 +497,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mr-32 {
   margin-right: 8rem;
+}
+.ml-12 {
+  margin-left: 3rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 .block {
   display: block;
@@ -519,6 +534,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .w-32 {
   width: 8rem;
 }
@@ -539,6 +557,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-48 {
   width: 12rem;
+}
+.w-10 {
+  width: 2.5rem;
 }
 .flex-none {
   flex: none;
@@ -616,6 +637,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -637,6 +662,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;

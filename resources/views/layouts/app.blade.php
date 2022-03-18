@@ -9,18 +9,18 @@
 </head>
 <body class="bg-gray-900 text-white">
     <header class="border-b border-gray-800">
-        <nav class="container mx-auto flex items-center justify-between px-4 py-6">
-            <div class="flex items-center">
+        <nav class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center">
                 <a href="/">
                     <img src="{{ asset('images/logo.svg') }}" alt="Minerals" class="w-32 flex-none">
                 </a>
-                <ul class="flex ml-8 space-x-5">
+                <ul class="flex ml-0 md:ml-8 space-x-5 mt-4 md:mt-0">
                     <li><a href="#" class="hover:text-gray-400">Dashboard</a></li>
                     <li><a href="#" class="hover:text-gray-400">Food</a></li>
                     <li><a href="#" class="hover:text-gray-400">Suggestions</a></li>
                 </ul>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center mt-4 md:mt-0">
                 <div class="relative">
                     <input type="text" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
                 </div>

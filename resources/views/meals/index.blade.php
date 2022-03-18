@@ -6,7 +6,7 @@
     <h2 class="text-blue-500 uppercase tracking-wide font-semibold">
         Meals
     </h2>
-    <div class="meals text-sm grid grid-cols-4 gap-12 border-b border-gray-800 pb-16">
+    <div class="meals text-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-12 border-b border-gray-800 pb-16">
         <div class="meal mt-8">
             <div class="relative inline-block">
                 <a href="#">
@@ -22,8 +22,8 @@
             <div class="text-gray-400 mt-1">Meal-type</div>
         </div>
     </div><!-- end list of meals -->
-    <div class="flex my-10">
-        <div class="best-meal w-3/4 mr-32">
+    <div class="flex flex-col lg:flex-row my-10">
+        <div class="best-meal w-full md:w-3/4 mr-0 lg:mr-32">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Best Meal</h2>
             <div class="best-meal-container space-y-12 mt-8">
                 <div class="meal bg-gray-800 rounded-lg shadow-md flex px-4 py-4">
@@ -40,15 +40,26 @@
                             Hard-code-name
                         </a>
                         <div class="text-gray-400 mt-1">Meal-type</div>
-                        <p class="mt-4 text-xs text-gray-400">
+                        <p class="mt-4 text-xs text-gray-400 hidden md:block">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, numquam dicta tempore sed laboriosam.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="recommended w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolorum officia vitae enim, unde obcaecati animi non tempora amet veniam dignissimos. Mollitia in cum expedita adipisci, quasi, vero neque impedit quas aliquid molestias recusandae ratione repudiandae tempore quae nostrum dolorem vel harum, explicabo nesciunt? Est nisi nam quae unde beatae! Unde vero deleniti magnam impedit magni repudiandae blanditiis, veritatis officia?
+        <div class="recommended md:w-1/4 mt-12 lg:mt-0">
+            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Recommended</h2>
+            <div class="recommended-container space-y-12 mt-8">
+                <div class="meal flex">
+                    <a href="#">
+                        <img src="{{ asset('images/avocado-toast-variations.jpg') }}" alt="Meal" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                    </a>
+                    <div>
+                        <a href="#" class="hover:text-gray-300 ml-2">Name of Meal</a>
+                        <div class="text-gray-400 text-sm mt-1 ml-2 hidden lg:block">Best bits...</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div><!-- end container -->

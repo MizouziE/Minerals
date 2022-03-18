@@ -11,7 +11,7 @@ class MealsController extends Controller
     {
         $meals = Meal::all();
 
-        return view('meals/index', compact('meals'));
+        return view('meals.index', compact('meals'));
     }
 
     public function store(Meal $meal)

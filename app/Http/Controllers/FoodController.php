@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class FoodController extends Controller
 {
@@ -14,14 +15,20 @@ class FoodController extends Controller
      */
     public function index(Food $food)
     {
-        $food = [
-            'name' => 'Apple',
-            'type' => 'Fruit'
-        ];
+        $food = Http::get('https://api.nal.usda.gov/fdc/v1/foods/search?api_key=DEMO_KEY&query=Apple')
+        ->json();
 
-        return view('food.index')
-                    ->with('name', 'Apple')
-                    ->with('type', 'Fruit');
+        // [
+        //     'name' => 'Apple',
+        //     'type' => 'Fruit'
+        // ];
+
+        dump($food);
+
+        return view('food.index', compact('food'))
+                    // ->with('name', 'Apple')
+                    // ->with('type', 'Fruit')
+                    ;
     }
 
     /**

@@ -18,9 +18,9 @@
                 </div>
             </div>
             <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                {{ $name }}
+                {{ $name ?? 'Apple' }}
             </a>
-            <div class="text-gray-400 mt-1">{{ $type }}</div>
+            <div class="text-gray-400 mt-1">{{ $type ?? 'Fruit' }}</div>
         </div>
     </div><!-- end list of food -->
 

@@ -15,7 +15,13 @@ class FoodController extends Controller
      */
     public function index(Food $food)
     {
-        $foods = Http::get('https://api.nal.usda.gov/fdc/v1/foods/list?api_key=DEMO_KEY&query=apple&pageSize=12')
+        $foods = Http::withOptions([
+            'query' => [
+                'api_key' => 'DEMO_KEY',
+                'query' => 'apple',
+                'pageSize' => '18']
+        ])
+        ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
         // [

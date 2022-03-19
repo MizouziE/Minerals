@@ -8,6 +8,7 @@
         Food
     </h2>
     <div class="food text-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-12 border-b border-gray-800 pb-16">
+        @foreach($foods as $food)
         <div class="food mt-8">
             <div class="relative inline-block">
                 <a href="#">
@@ -18,10 +19,11 @@
                 </div>
             </div>
             <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                {{ $name ?? 'Apple' }}
+                {{ $food['description'] ?? 'Apple' }}
             </a>
-            <div class="text-gray-400 mt-1">{{ $type ?? 'Fruit' }}</div>
+            <div class="text-gray-400 mt-1">{{ $food['brandOwner'] ?? 'Fruit' }}</div>
         </div>
+        @endforeach
     </div><!-- end list of food -->
 
 

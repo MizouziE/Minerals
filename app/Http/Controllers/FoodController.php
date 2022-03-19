@@ -15,7 +15,7 @@ class FoodController extends Controller
      */
     public function index(Food $food)
     {
-        $food = Http::get('https://api.nal.usda.gov/fdc/v1/foods/search?api_key=DEMO_KEY&query=Apple')
+        $foods = Http::get('https://api.nal.usda.gov/fdc/v1/foods/list?api_key=DEMO_KEY&query=apple&pageSize=12')
         ->json();
 
         // [
@@ -23,9 +23,9 @@ class FoodController extends Controller
         //     'type' => 'Fruit'
         // ];
 
-        dump($food);
+        dump($foods);
 
-        return view('food.index', compact('food'))
+        return view('food.index', compact('foods'))
                     // ->with('name', 'Apple')
                     // ->with('type', 'Fruit')
                     ;

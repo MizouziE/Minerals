@@ -17,7 +17,7 @@ class FoodController extends Controller
     {
         $foods = Http::withOptions([
             'query' => [
-                'api_key' => 'DEMO_KEY',
+                'api_key' => env('API_KEY', 'DEMO_KEY'),
                 'query' => 'apple',
                 'pageSize' => '18']
         ])

@@ -29,7 +29,9 @@
             </div>
             <div class="flex items-center mt-4 md:mt-0">
                 <div class="relative">
-                    <input type="text" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
+                    <form action="/food" method="GET" >
+                        <input type="text" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
+                    </form>
                 </div>
                 <div class="ml-6">
                     <a href="#"><img src="{{ asset('images/orange-slice.png') }}" alt="orange" class="rounded-full w-8 h-8"></a>

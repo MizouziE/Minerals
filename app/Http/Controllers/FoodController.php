@@ -13,13 +13,14 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Food $food)
+    public function index(Food $food, Request $request)
     {
         $foods = Http::withOptions([
             'query' => [
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
-                'query' => 'apple',
-                'pageSize' => '18']
+                'query' => $request ?? '',
+                'dataType' => 'Foundation',
+                'pageSize' => '24']
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();

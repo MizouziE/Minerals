@@ -13,3 +13,4 @@ Route::get('/meals', [MealsController::class, 'index']);
 Route::get('/meals/{meal}', [MealsController::class, 'show']);
 
 Route::get('/food', [FoodController::class, 'index']);
+Route::get('/food-item', [FoodController::class, 'show']);

@@ -25,17 +25,7 @@ class FoodController extends Controller
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        // [
-        //     'name' => 'Apple',
-        //     'type' => 'Fruit'
-        // ];
-
-        dump($foods);
-
-        return view('food.index', compact('foods'))
-                    // ->with('name', 'Apple')
-                    // ->with('type', 'Fruit')
-                    ;
+        return view('food.index', compact('foods'));
     }
 
     /**
@@ -57,7 +47,23 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view('food.show');
+        $request = 'apple';
+
+        $food = Http::withOptions([
+            'query' => [
+                'api_key' => env('API_KEY', 'DEMO_KEY'),
+                'query' => $request ?? '',
+                'dataType' => 'Foundation',
+                'pageSize' => '1']
+        ])
+        ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
+        ->json();
+
+        $fNs = $food[0]['foodNutrients'];
+
+        // dump($fNs);
+
+        return view('food.show', compact('food', 'fNs'));
     }
 
     /**

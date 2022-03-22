@@ -10,7 +10,7 @@
         <div class="meal mt-8">
             <div class="relative inline-block">
                 <a href="#">
-                    <img src="{{ asset('images/micronutrients.jpg') }}" alt="Meal" class="hover:opacity-75 transition ease-in-out duration-150">
+                    <img src="{{ asset('images/micronutrients.jpg') }}" alt="Meal" class="hover:opacity-75 rounded-lg transition ease-in-out duration-150">
                 </a>
                 <div class="absolute bottom-0 right-0 h-12 w-12 bg-gray-800 rounded-full" style="right: -20px; bottom: -20px;">
                     <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
@@ -29,7 +29,7 @@
                 <div class="meal bg-gray-800 rounded-lg shadow-md flex px-4 py-4">
                     <div class="relative flex-none">
                         <a href="#">
-                            <img src="{{ asset('images/micronutrients.jpg') }}" alt="Meal" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
+                            <img src="{{ asset('images/micronutrients.jpg') }}" alt="Meal" class="w-48 rounded-lg hover:opacity-75 transition ease-in-out duration-150">
                         </a>
                         <div class="absolute bottom-0 right-0 h-10 w-10 bg-gray-900 rounded-full" style="right: -10px; bottom: -10px;">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">80%</div>
@@ -52,7 +52,7 @@
             <div class="recommended-container space-y-12 mt-8">
                 <div class="meal flex">
                     <a href="#">
-                        <img src="{{ asset('images/avocado-toast-variations.jpg') }}" alt="Meal" class="w-16 hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ asset('images/avocado-toast-variations.jpg') }}" alt="Meal" class="w-16 rounded-lg hover:opacity-75 transition ease-in-out duration-150">
                     </a>
                     <div>
                         <a href="#" class="hover:text-gray-300 ml-2">Name of Meal</a>

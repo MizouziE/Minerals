@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class FoodController extends Controller
 {
@@ -12,16 +13,19 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Food $food)
+    public function index(Food $food, Request $request)
     {
-        $food = [
-            'name' => 'Apple',
-            'type' => 'Fruit'
-        ];
+        $foods = Http::withOptions([
+            'query' => [
+                'api_key' => env('API_KEY', 'DEMO_KEY'),
+                'query' => $request ?? '',
+                'dataType' => 'Foundation',
+                'pageSize' => '24']
+        ])
+        ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
+        ->json();
 
-        return view('food.index')
-                    ->with('name', 'Apple')
-                    ->with('type', 'Fruit');
+        return view('food.index', compact('foods'));
     }
 
     /**
@@ -43,7 +47,23 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        $request = 'apple';
+
+        $food = Http::withOptions([
+            'query' => [
+                'api_key' => env('API_KEY', 'DEMO_KEY'),
+                'query' => $request ?? '',
+                'dataType' => 'Foundation',
+                'pageSize' => '1']
+        ])
+        ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
+        ->json();
+
+        $fNs = $food[0]['foodNutrients'];
+
+        // dump($fNs);
+
+        return view('food.show', compact('food', 'fNs'));
     }
 
     /**

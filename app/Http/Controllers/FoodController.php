@@ -54,16 +54,34 @@ class FoodController extends Controller
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
                 'query' => $request ?? '',
                 'dataType' => 'Foundation',
-                'pageSize' => '1']
+                'pageSize' => '1'
+                ]
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        $fNs = $food[0]['foodNutrients'];
+        $fNs = $food[0]['foodNutrients'] ?? [];
 
-        // dump($fNs);
 
-        return view('food.show', compact('food', 'fNs'));
+        $image = Http::withHeaders([
+            'Authorization' => env('IMAGE_API_KEY')
+        ])
+        ->withOptions([
+            'query' => [
+                'query' => $request
+                ]
+        ])
+        ->get('https://api.pexels.com/v1/search')
+        ->json();
+
+
+        // dump($image);
+
+        return view('food.show', compact(
+            'food',
+            'fNs',
+            'image'
+        ));
     }
 
     /**

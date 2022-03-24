@@ -39,8 +39,6 @@ class FoodController extends Controller
         ->get('https://api.pexels.com/v1/search')
         ->json();
 
-        dump($images, $foods);
-
         return view('food.index', compact('foods', 'images'));
     }
 

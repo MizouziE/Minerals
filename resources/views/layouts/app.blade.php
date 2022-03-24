@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
-    <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ date('YmdHis') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 </head>
 
@@ -23,14 +23,14 @@
                 </a>
                 <ul class="flex ml-0 md:ml-8 space-x-5 mt-4 md:mt-0">
                     <li><a href="#" class="hover:text-gray-400">Dashboard</a></li>
-                    <li><a href="#" class="hover:text-gray-400">Food</a></li>
+                    <li><a href="/food" class="hover:text-gray-400">Food</a></li>
                     <li><a href="#" class="hover:text-gray-400">Suggestions</a></li>
                 </ul>
             </div>
             <div class="flex items-center mt-4 md:mt-0">
                 <div class="relative">
                     <form action="/food" method="GET" >
-                        <input type="text" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
+                        <input type="text" name="search" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
                     </form>
                 </div>
                 <div class="ml-6">

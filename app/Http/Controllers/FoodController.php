@@ -15,17 +15,31 @@ class FoodController extends Controller
      */
     public function index(Food $food, Request $request)
     {
+        $search = $request->input('search');
+
         $foods = Http::withOptions([
             'query' => [
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
-                'query' => $request ?? '',
+                'query' => $search ?? '',
                 'dataType' => 'Foundation',
                 'pageSize' => '24']
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        return view('food.index', compact('foods'));
+        $images = Http::withHeaders([
+            'Authorization' => env('IMAGE_API_KEY')
+        ])
+        ->withOptions([
+            'query' => [
+                'query' => $search ?? 'apple',
+                'per_page' => '24'
+                ]
+        ])
+        ->get('https://api.pexels.com/v1/search')
+        ->json();
+
+        return view('food.index', compact('foods', 'images'));
     }
 
     /**
@@ -45,25 +59,44 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show(Food $food, Request $request)
     {
-        $request = 'apple';
+        // $request = 'apple';
+        $search = $request->input('search');
 
         $food = Http::withOptions([
             'query' => [
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
-                'query' => $request ?? '',
+                'query' => $search ?? 'apple',
                 'dataType' => 'Foundation',
-                'pageSize' => '1']
+                'pageSize' => '1'
+                ]
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        $fNs = $food[0]['foodNutrients'];
+        $fNs = $food[0]['foodNutrients'] ?? [];
 
-        // dump($fNs);
 
-        return view('food.show', compact('food', 'fNs'));
+        $image = Http::withHeaders([
+            'Authorization' => env('IMAGE_API_KEY')
+        ])
+        ->withOptions([
+            'query' => [
+                'query' => $search ?? 'apple'
+                ]
+        ])
+        ->get('https://api.pexels.com/v1/search')
+        ->json();
+
+
+        // dump($image);
+
+        return view('food.show', compact(
+            'food',
+            'fNs',
+            'image'
+        ));
     }
 
     /**

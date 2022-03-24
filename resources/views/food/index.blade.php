@@ -12,7 +12,7 @@
         <div class="food mt-8">
             <div class="relative inline-block">
                 <a href="#">
-                    <img src="{{ asset('images/apple.jpg') }}" alt="food" class="hover:opacity-75 rounded-lg transition ease-in-out duration-150">
+                    <img src="{{ $images['photos'][$loop->index]['src']['small'] ?? asset('images/apple.jpg') }}" alt="food" class="hover:opacity-75 rounded-lg transition ease-in-out duration-150">
                 </a>
                 <div class="absolute bottom-0 right-0 h-12 w-12 bg-gray-800 rounded-full" style="right: -20px; bottom: -20px;">
                     <div class="font-semibold text-xs flex justify-center items-center h-full">{{ count($food['foodNutrients']) ?? 'N/A' }}</div>
@@ -21,7 +21,7 @@
             <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
                 {{ $food['description'] ?? 'Apple' }}
             </a>
-            <div class="text-gray-400 mt-1">{{ $food['scientificName'] ?? 'Fruit' }}</div>
+            <div class="text-gray-400 mt-1">{{ $food['scientificName'] ?? 'TODO: Figure this out' }}</div>
         </div>
         @endforeach
     </div><!-- end list of food -->

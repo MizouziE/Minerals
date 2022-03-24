@@ -15,17 +15,33 @@ class FoodController extends Controller
      */
     public function index(Food $food, Request $request)
     {
+        $search = $request->input('search');
+
         $foods = Http::withOptions([
             'query' => [
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
-                'query' => $request ?? '',
+                'query' => $search ?? '',
                 'dataType' => 'Foundation',
                 'pageSize' => '24']
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        return view('food.index', compact('foods'));
+        $images = Http::withHeaders([
+            'Authorization' => env('IMAGE_API_KEY')
+        ])
+        ->withOptions([
+            'query' => [
+                'query' => $search ?? 'apple',
+                'per_page' => '24'
+                ]
+        ])
+        ->get('https://api.pexels.com/v1/search')
+        ->json();
+
+        dump($images, $foods);
+
+        return view('food.index', compact('foods', 'images'));
     }
 
     /**

@@ -45,14 +45,15 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show(Food $food, Request $request)
     {
-        $request = 'apple';
+        // $request = 'apple';
+        $search = $request->input('search');
 
         $food = Http::withOptions([
             'query' => [
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
-                'query' => $request ?? '',
+                'query' => $search ?? 'apple',
                 'dataType' => 'Foundation',
                 'pageSize' => '1'
                 ]
@@ -68,7 +69,7 @@ class FoodController extends Controller
         ])
         ->withOptions([
             'query' => [
-                'query' => $request
+                'query' => $search ?? 'apple'
                 ]
         ])
         ->get('https://api.pexels.com/v1/search')

@@ -29,8 +29,8 @@
             </div>
             <div class="flex items-center mt-4 md:mt-0">
                 <div class="relative">
-                    <form action="/food" method="GET" >
-                        <input type="text" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
+                    <form action="/food-item" method="GET" >
+                        <input type="text" name="search" class="bg-gray-800 text-sm rounded-full w-64 focus:outline-none focus:shadow-outline px-3 py-1" placeholder="Search...">
                     </form>
                 </div>
                 <div class="ml-6">

@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container mx-auto px-4">
-    <div class="food-item border-b border-gray-800 pb-12 flex">
+    <div class="food-item border-b border-gray-800 pb-12 flex"
+    x-data="{ isFullListVisible: false }">
         <div class="flex-none w-1/2">
             <img src="{{ $image['photos'][0]['src']['medium'] }} ?? /public/images/apple.jpg" alt="Appleee" class="rounded-lg">
         </div>
@@ -32,7 +33,9 @@
                 </div>
                 @endforelse
                 <div class="flex flex-row items-center py-2">
-                    <button class="w-12 h-12 bg-gray-800 rounded-full">
+                    <button 
+                    @click="isFullListVisible = true"
+                    class="w-12 h-12 bg-gray-800 rounded-full">
                         <div class="font-semibold text-2xl flex justify-center items-center h-full">
                             +
                         </div>
@@ -43,11 +46,16 @@
         </div>
 
         @if ($fNs)
-        <div style="background-color: rgba(0, 0, 0, .5);" class="hidden top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
+        <div 
+        x-show="isFullListVisible"
+        style="background-color: rgba(0, 0, 0, .5);" class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
             <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
                 <div class="bg-gray-900 rounded">
                     <div class="flex justify-end px-4 pt-2">
-                        <button class="text-3xl leading-none hover:text-gray-300">&times;</button>
+                        <button 
+                        @click="isFullListVisible = true"
+                        @keydown.escape.window="isFullListVisible = false"
+                        class="text-3xl leading-none hover:text-gray-300">&times;</button>
                     </div>
                     <div class="modal-body px-8 py-8 flex flex-wrap items-center space-x-12">
                         <div class="responsive-container content-center relative">

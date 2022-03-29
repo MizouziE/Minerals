@@ -22,16 +22,7 @@
                         <div class="ml-4 text-xs">{{ $fN['name'] }}</div>
                 </div>
                 @endif
-                @empty
-                <div class="flex flex-row items-center py-2">
-                    <div class="w-12 h-12 bg-gray-800 rounded-full">
-                        <div class="font-semibold text-xs flex justify-center items-center h-full">
-                            0
-                        </div>
-                    </div>
-                    <div class="ml-4 text-xs">Sorry,<br>No data</div>
-                </div>
-                @endforelse
+                @if ($loop->last)
                 <div class="flex flex-row items-center py-2">
                     <button 
                     @click="isFullListVisible = true"
@@ -42,6 +33,17 @@
                     </button>
                     <div class="ml-4 text-xs">Show more...</div>
                 </div>
+                @endif
+                @empty
+                <div class="flex flex-row items-center py-2">
+                    <div class="w-12 h-12 bg-gray-800 rounded-full">
+                        <div class="font-semibold text-xs flex justify-center items-center h-full">
+                            0
+                        </div>
+                    </div>
+                    <div class="ml-4 text-xs">Sorry,<br>No data</div>
+                </div>
+                @endforelse
             </div>
         </div>
 
@@ -49,15 +51,16 @@
         <div 
         x-show="isFullListVisible"
         style="background-color: rgba(0, 0, 0, .5);" class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
-            <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
+            <div class="container mx-auto h-3/4 w-auto lg:px-32 rounded-lg overflow-y-auto">
                 <div class="bg-gray-900 rounded">
                     <div class="flex justify-end px-4 pt-2">
                         <button 
-                        @click="isFullListVisible = true"
+                        @click="isFullListVisible = false"
                         @keydown.escape.window="isFullListVisible = false"
                         class="text-3xl leading-none hover:text-gray-300">&times;</button>
                     </div>
-                    <div class="modal-body px-8 py-8 flex flex-wrap items-center space-x-12">
+                    <div class="modal-body px-8 py-8 flex flex-col flex-wrap items-center space-x-12">
+                        <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs">per serving:</h4>
                         <div class="responsive-container content-center relative">
                             @forelse($fNs as $fN)
                             <div class="flex flex-row items-center py-2">

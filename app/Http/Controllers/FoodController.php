@@ -32,7 +32,7 @@ class FoodController extends Controller
         ])
         ->withOptions([
             'query' => [
-                'query' => $search ?? 'apple',
+                'query' => $search.' food' ?? 'apple food',
                 'per_page' => '24'
                 ]
         ])
@@ -61,7 +61,6 @@ class FoodController extends Controller
      */
     public function show(Food $food, Request $request)
     {
-        // $request = 'apple';
         $search = $request->input('search');
 
         $food = Http::withOptions([
@@ -75,26 +74,26 @@ class FoodController extends Controller
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        $fNs = $food[0]['foodNutrients'] ?? [];
-
+        $foodNutrients = array_filter($food[0]['foodNutrients'], function ($fN) { //removes ZERO values
+            if ($fN['amount']) {
+                return $fN;
+            }
+        }) ?? [];
 
         $image = Http::withHeaders([
             'Authorization' => env('IMAGE_API_KEY')
         ])
         ->withOptions([
             'query' => [
-                'query' => $search ?? 'apple'
+                'query' => $search.' food' ?? 'apple food'
                 ]
         ])
         ->get('https://api.pexels.com/v1/search')
         ->json();
 
-
-        // dump($image);
-
         return view('food.show', compact(
             'food',
-            'fNs',
+            'foodNutrients',
             'image'
         ));
     }

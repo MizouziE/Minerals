@@ -12,7 +12,7 @@
             <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs">per serving:</h4>
             <div class="flex flex-wrap items-center space-x-12">
                 <div class="flex flex-col items-left">
-                    @forelse($fNs as $fN)
+                    @forelse($foodNutrients as $fN)
                     @if ($loop->index < 5) <div class="flex flex-row items-center py-2">
                         <div class="w-12 h-12 bg-gray-800 rounded-full">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">
@@ -24,14 +24,14 @@
                 @endif
                 @if ($loop->last)
                 <div class="flex flex-row items-center py-2">
-                    <button 
+                    <button
                     @click="isFullListVisible = true"
                     class="w-12 h-12 bg-gray-800 rounded-full">
                         <div class="font-semibold text-2xl flex justify-center items-center h-full">
                             +
                         </div>
                     </button>
-                    <div class="ml-4 text-xs">Show more...</div>
+                    <div class="ml-4 text-xs">Show {{ count($fNs)-5 }} more...</div>
                 </div>
                 @endif
                 @empty
@@ -48,13 +48,13 @@
         </div>
 
         @if ($fNs)
-        <div 
+        <div
         x-show="isFullListVisible"
         style="background-color: rgba(0, 0, 0, .5);" class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
             <div class="container mx-auto h-3/4 w-auto lg:px-32 rounded-lg overflow-y-auto">
                 <div class="bg-gray-900 rounded">
                     <div class="flex justify-end px-4 pt-2">
-                        <button 
+                        <button
                         @click="isFullListVisible = false"
                         @keydown.escape.window="isFullListVisible = false"
                         class="text-3xl leading-none hover:text-gray-300">&times;</button>

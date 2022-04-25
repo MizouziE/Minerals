@@ -23,7 +23,7 @@
                     <img src="{{ asset('images/logo.svg') }}" alt="Minerals" class="w-32 flex-none">
                 </a>
                 <ul class="flex ml-0 md:ml-8 space-x-5 mt-4 md:mt-0">
-                    <li><a href="#" class="hover:text-gray-400">Dashboard</a></li>
+                    <li><a href="/" class="hover:text-gray-400">Dashboard</a></li>
                     <li><a href="/food" class="hover:text-gray-400">Food</a></li>
                     <li><a href="#" class="hover:text-gray-400">Suggestions</a></li>
                 </ul>

@@ -93,7 +93,7 @@ class FoodController extends Controller
 
         return view('food.show', compact(
             'food',
-            'fNs',
+            'foodNutrients',
             'image'
         ));
     }

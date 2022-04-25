@@ -31,7 +31,7 @@
                             +
                         </div>
                     </button>
-                    <div class="ml-4 text-xs">Show {{ count($fNs)-5 }} more...</div>
+                    <div class="ml-4 text-xs">Show {{ count($foodNutrients)-5 }} more...</div>
                 </div>
                 @endif
                 @empty
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        @if ($fNs)
+        @if ($foodNutrients)
         <div
         x-show="isFullListVisible"
         style="background-color: rgba(0, 0, 0, .5);" class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
@@ -62,7 +62,7 @@
                     <div class="modal-body px-8 py-8 flex flex-col flex-wrap items-center space-x-12">
                         <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs">per serving:</h4>
                         <div class="responsive-container content-center relative">
-                            @forelse($fNs as $fN)
+                            @forelse($foodNutrients as $fN)
                             <div class="flex flex-row items-center py-2">
                                 <div class="w-12 h-12 bg-gray-800 rounded-full">
                                     <div class="font-semibold text-xs flex justify-center items-center h-full">

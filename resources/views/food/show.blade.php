@@ -5,7 +5,7 @@
     <div class="food-item border-b border-gray-800 pb-12 flex"
     x-data="{ isFullListVisible: false }">
         <div class="flex-none w-1/2">
-            <img src="{{ $image['photos'][0]['src']['medium'] }} ?? /public/images/apple.jpg" alt="Appleee" class="rounded-lg">
+            <img src="{{ $image['photos'][0]['src']['medium'] }} ?? /public/images/apple.jpg" alt="Appleee" class="rounded-lg w-48 md:w-96 lg:w-144">
         </div>
         <div class="ml-12">
             <h2 class="font-semibold text-2xl">{{ $food[0]['description'] ?? 'Name Here' }}</h2>

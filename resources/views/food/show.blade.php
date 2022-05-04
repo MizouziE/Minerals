@@ -9,12 +9,12 @@
         </div>
         <div class="ml-12">
             <h2 class="font-semibold text-2xl">{{ $food[0]['description'] ?? 'Name Here' }}</h2>
-            <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs">per serving:</h4>
+            <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs mb-2">per serving:</h4>
             <div class="flex flex-wrap items-center space-x-12">
                 <div class="flex flex-col items-left">
                     @forelse($foodNutrients as $fN)
-                    @if ($loop->index < 5) <div class="flex flex-row items-center py-2">
-                        <div class="w-12 h-12 bg-gray-800 rounded-full">
+                    @if ($loop->index < 5) <div class="flex flex-row items-center py-0.5">
+                        <div class="w-16 h-16 bg-gray-800 rounded-full">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">
                                 {{ $fN['amount'] }}{{ $fN['unitName'] }}
                             </div>
@@ -23,10 +23,10 @@
                 </div>
                 @endif
                 @if ($loop->last)
-                <div class="flex flex-row items-center py-2">
+                <div class="flex flex-row items-center py-0.5">
                     <button
                     @click="isFullListVisible = true"
-                    class="w-12 h-12 bg-gray-800 rounded-full">
+                    class="w-16 h-16 bg-gray-800 rounded-full">
                         <div class="font-semibold text-2xl flex justify-center items-center h-full">
                             +
                         </div>
@@ -35,8 +35,8 @@
                 </div>
                 @endif
                 @empty
-                <div class="flex flex-row items-center py-2">
-                    <div class="w-12 h-12 bg-gray-800 rounded-full">
+                <div class="flex flex-row items-center py-0.5">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full">
                         <div class="font-semibold text-xs flex justify-center items-center h-full">
                             0
                         </div>
@@ -57,14 +57,14 @@
                         <button
                         @click="isFullListVisible = false"
                         @keydown.escape.window="isFullListVisible = false"
-                        class="text-3xl leading-none hover:text-gray-300">&times;</button>
+                        class="text-3xl leading-none hover:text-gray-300 fixed">&times;</button>
                     </div>
                     <div class="modal-body px-8 py-8 flex flex-col flex-wrap items-center space-x-12">
-                        <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs">per serving:</h4>
+                        <h4 class="font-semibold uppercase border-b border-gray-800 text-gray-400 text-xs mb-2">per serving:</h4>
                         <div class="responsive-container content-center relative">
                             @forelse($foodNutrients as $fN)
-                            <div class="flex flex-row items-center py-2">
-                                <div class="w-12 h-12 bg-gray-800 rounded-full">
+                            <div class="flex flex-row items-center py-0.5">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full">
                                     <div class="font-semibold text-xs flex justify-center items-center h-full">
                                         {{ $fN['amount'] }}{{ $fN['unitName'] }}
                                     </div>
@@ -72,8 +72,8 @@
                                 <div class="ml-4 text-xs">{{ $fN['name'] }}</div>
                             </div>
                             @empty
-                            <div class="flex flex-row items-center py-2">
-                                <div class="w-12 h-12 bg-gray-800 rounded-full">
+                            <div class="flex flex-row items-center py-0.5">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full">
                                     <div class="font-semibold text-xs flex justify-center items-center h-full">
                                         0
                                     </div>

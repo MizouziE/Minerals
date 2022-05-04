@@ -21,7 +21,7 @@
             <a href="/food-item?search={{ $food['description'] ?? 'Apple' }}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
                 {{ $food['description'] ?? 'Apple' }}
             </a>
-            <div class="text-gray-400 mt-1">{{ $food['scientificName'] ?? 'TODO: Figure this out' }}</div>
+            <!-- <div class="text-gray-400 mt-1">{{ $food['scientificName'] ?? 'TODO: Figure this out' }}</div> -->
         </div>
         @endforeach
     </div><!-- end list of food -->

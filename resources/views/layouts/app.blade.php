@@ -38,7 +38,7 @@
                     </form>
                 </div>
                 <div class="ml-6">
-                    <a href="#"><img src="{{ asset('images/orange-slice.png') }}" alt="orange" class="rounded-full w-8 h-8"></a>
+                    <a href="#"><img src="{{ asset('images/orange-slice.png') }}" alt="orange" class="object-cover rounded-full w-8 h-8"></a>
                 </div>
             </div>
         </nav>

@@ -22,24 +22,29 @@ class FoodController extends Controller
                 'api_key' => env('API_KEY', 'DEMO_KEY'),
                 'query' => $search ?? '',
                 'dataType' => 'Foundation',
-                'pageSize' => '24']
+                'pageSize' => 15
+                ]
         ])
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        $images = Http::withHeaders([
-            'Authorization' => env('IMAGE_API_KEY')
-        ])
-        ->withOptions([
-            'query' => [
-                'query' => $search.' food' ?? 'apple food',
-                'per_page' => '24'
-                ]
-        ])
-        ->get('https://api.pexels.com/v1/search')
-        ->json();
+        foreach ($foods as &$food) {
 
-        return view('food.index', compact('foods', 'images'));
+            $food['image'] = Http::withHeaders([
+                'Authorization' => env('IMAGE_API_KEY')
+            ])
+            ->withOptions([
+                'query' => [
+                    'query' => strtok($food['description'], ','),
+                    'per_page' => 1
+                    ]
+            ])
+            ->get('https://api.pexels.com/v1/search')
+            ->json()['photos'][0]['src']['small']
+            ?? null;
+            }
+
+        return view('food.index', compact('foods'));
     }
 
     /**
@@ -74,27 +79,26 @@ class FoodController extends Controller
         ->get('https://api.nal.usda.gov/fdc/v1/foods/list')
         ->json();
 
-        $foodNutrients = array_filter($food[0]['foodNutrients'], function ($fN) { //removes ZERO values
+        $food[0]['foodNutrients'] = array_filter($food[0]['foodNutrients'], function ($fN) { //removes ZERO values
             if ($fN['amount']) {
                 return $fN;
             }
         }) ?? [];
 
-        $image = Http::withHeaders([
+        $food['image'] = Http::withHeaders([
             'Authorization' => env('IMAGE_API_KEY')
         ])
         ->withOptions([
             'query' => [
-                'query' => $search.' food' ?? 'apple food'
+                'query' => $food[0]['description'],
+                'per_page' => 1
                 ]
         ])
         ->get('https://api.pexels.com/v1/search')
-        ->json();
+        ->json()['photos'][0]['src']['medium'];
 
         return view('food.show', compact(
             'food',
-            'foodNutrients',
-            'image'
         ));
     }
 
